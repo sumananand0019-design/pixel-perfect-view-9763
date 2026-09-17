@@ -19,6 +19,9 @@
  */
 
 @theme inline {
+  --font-display: "Russo One", system-ui, sans-serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --color-type-foreground: oklch(1 0 0);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -141,4 +144,96 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+/* ---- Kalos Pokédex design system ---- */
+:root {
+  --radius: 0.9rem;
+  --background: oklch(0.97 0.006 250);
+  --foreground: oklch(0.22 0.02 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.02 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.02 260);
+  --primary: oklch(0.55 0.21 27);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.93 0.01 255);
+  --secondary-foreground: oklch(0.28 0.02 260);
+  --muted: oklch(0.94 0.008 255);
+  --muted-foreground: oklch(0.5 0.02 258);
+  --accent: oklch(0.55 0.16 250);
+  --accent-foreground: oklch(0.99 0 0);
+  --border: oklch(0.89 0.01 255);
+  --input: oklch(0.89 0.01 255);
+  --ring: oklch(0.55 0.21 27);
+}
+
+.dark {
+  --background: oklch(0.2 0.018 262);
+  --foreground: oklch(0.96 0.005 250);
+  --card: oklch(0.25 0.02 262);
+  --card-foreground: oklch(0.96 0.005 250);
+  --popover: oklch(0.25 0.02 262);
+  --popover-foreground: oklch(0.96 0.005 250);
+  --primary: oklch(0.62 0.21 27);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.3 0.02 262);
+  --secondary-foreground: oklch(0.96 0.005 250);
+  --muted: oklch(0.3 0.02 262);
+  --muted-foreground: oklch(0.72 0.02 258);
+  --accent: oklch(0.65 0.16 248);
+  --accent-foreground: oklch(0.18 0.02 262);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.62 0.21 27);
+}
+
+:root,
+.dark {
+  --gradient-hero: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--primary) 85%, black),
+    color-mix(in oklab, var(--accent) 70%, black)
+  );
+  --gradient-special: linear-gradient(
+    160deg,
+    color-mix(in oklab, var(--accent) 14%, var(--card)),
+    var(--card)
+  );
+  --shadow-card: 0 18px 40px -18px color-mix(in oklab, var(--primary) 45%, transparent);
+
+  --type-normal: #9199a1;
+  --type-fire: #e8622a;
+  --type-water: #3a8ee6;
+  --type-electric: #d9a400;
+  --type-grass: #3fa35b;
+  --type-ice: #4bb8c9;
+  --type-fighting: #c0392b;
+  --type-poison: #9b59b6;
+  --type-ground: #b07c3a;
+  --type-flying: #6f8fd4;
+  --type-psychic: #e4557f;
+  --type-bug: #7fa62a;
+  --type-rock: #a08c50;
+  --type-ghost: #5e5a9c;
+  --type-dragon: #4b4fc4;
+  --type-dark: #4e4356;
+  --type-steel: #6d8a94;
+  --type-fairy: #dd6aa6;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
 }
