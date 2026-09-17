@@ -239,7 +239,7 @@ function PokemonDetailPage() {
           <h2 className="font-display text-xl text-foreground">Evolution Chain</h2>
           {!evolution ? (
             <p className="mt-4 text-sm text-muted-foreground">Loading evolutions…</p>
-          ) : evolution.length === 1 && evolution[0].length === 1 ? (
+          ) : evolution.length === 1 && (evolution[0]?.length ?? 0) === 1 ? (
             <p className="mt-4 text-sm text-muted-foreground">
               {p.displayName} does not evolve.
             </p>
