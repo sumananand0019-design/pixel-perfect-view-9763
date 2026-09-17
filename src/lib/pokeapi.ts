@@ -215,15 +215,17 @@ export function matchupQuery(types: PokemonType[]) {
       for (const type of types) {
         const data = await getJson<any>(`${API}/type/${type}`);
         const r = data.damage_relations;
-        for (const x of r.double_damage_from) multipliers[x.name] *= 2;
-        for (const x of r.half_damage_from) multipliers[x.name] *= 0.5;
-        for (const x of r.no_damage_from) multipliers[x.name] *= 0;
+        for (const x of r.double_damage_from)
+          multipliers[x.name] = (multipliers[x.name] ?? 1) * 2;
+        for (const x of r.half_damage_from)
+          multipliers[x.name] = (multipliers[x.name] ?? 1) * 0.5;
+        for (const x of r.no_damage_from) multipliers[x.name] = 0;
       }
       const weaknesses: { type: string; x: number }[] = [];
       const resistances: { type: string; x: number }[] = [];
       const immunities: string[] = [];
       for (const t of TYPES) {
-        const m = multipliers[t];
+        const m = multipliers[t] ?? 1;
         if (m === 0) immunities.push(t);
         else if (m > 1) weaknesses.push({ type: t, x: m });
         else if (m < 1) resistances.push({ type: t, x: m });
